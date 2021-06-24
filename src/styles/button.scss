@@ -1,0 +1,28 @@
+.button {
+  margin-top: 16px;
+  width: 100%;
+  background: #835AFD;
+  border-radius: 8px;
+  height: 50px;
+  border: 0;
+  padding: 0 32px;
+
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1rem;
+  color: #FEFEFE;
+  transition: filter 0.2s;
+
+  svg {
+    margin-right: 8px;
+  }
+
+  &:not(:disabled):hover {
+    filter: brightness(0.8);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

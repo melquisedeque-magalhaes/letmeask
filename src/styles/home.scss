@@ -1,0 +1,138 @@
+#container {
+  height: 100vh;
+
+  display: flex;
+  align-items: stretch;
+  color: #ffffff;
+
+  aside {
+    flex: 7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    background: #835AFD;
+    padding: 7.5rem 5rem; 
+
+    img {
+      max-width: 320px;
+    }
+
+    strong {
+      font-family: "Poppins";
+      font-weight: 700;
+      font-size: 2.25rem;
+      line-height: 42px;
+      margin-top: 1rem;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-family: "Roboto";
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 32px;
+      color: #f8f8f8;
+      opacity: 0.7;
+    }
+  }
+
+  main {
+    flex: 8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 32px;
+    
+  }
+}
+
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 320px;
+  align-items: stretch;
+  text-align: center;
+
+  > img {
+    margin-bottom: 56px;
+    align-self: center;
+  }
+
+  form {
+    margin-top: 32px;
+    flex-direction: column;
+    width: 100%;
+
+    input {
+      width: 100%;
+      height: 50px;
+      background: #ffffff;
+      border: 1px solid #A8A8B3;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+  }
+
+}
+
+.create-room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 64px;
+  width: 100%;
+  background: #EA4335;
+  height: 50px;
+  border-radius: 8px;
+  border: 0;
+  color: #FEFEFE;
+
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1rem;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  img {
+    margin-right: 8px;
+  }
+}
+
+.separator {
+  font-size: 14px;
+  color: #a8a8b3;
+
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-right: 16px;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-left: 16px;
+  }
+}
+
+
+
+  

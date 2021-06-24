@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  
+}
+
+// :root {
+//   --white: #F8F8F8;
+//   --white-details: #FEFEFE;
+//   --gray-dark: #737380;
+//   --gray-medium: #A8A8B3;
+//   --gray-light: #DBDCDD;
+//   --red-danger: #E73F5D;
+//   --gradiente: #485BFF
+//   --purple: #835AFD;
+//   --shadow: #050206;
+//   --back: #29292E;
+//   --pink-dark: #E559F9;
+//   --pink-light: #D67EE2;
+// }
+
+@media(max-width: 1080px){
+  html {
+      font-size: 93.75%;
+  }
+}
+
+@media(max-width: 720px){
+  html {
+      font-size: 87.5%;
+  }
+}
+
+body {
+  background: #F8F8F8;
+  color: #29292E;
+}
+
+body, input, button, textarea {
+  font: 400 1rem 'Roboto', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
