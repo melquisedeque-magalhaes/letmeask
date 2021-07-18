@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import toast, { Toaster } from 'react-hot-toast';
 
 import { Button } from '../components/Button'
 
@@ -34,16 +35,24 @@ export function Home(){
   async function handleJoinRoom(event: FormEvent){
     event.preventDefault()
 
-    if(roomCode.trim() === '')
+    if(roomCode.trim() === ''){
+      toast.error('Erro Formulario vazio!')
       return
-
+    }
+      
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if(!roomRef.exists()){
-      alert('Room does not exists')
+      toast.error('Room does not exists')
       return
     }
 
+    if(roomRef.val().endedAt){
+      toast.error('Room already closed.')
+      return
+    }
+      
+    toast.success('Seja bem vindo')
     history.push(`room/${roomCode}`)
 
   }
@@ -90,6 +99,7 @@ export function Home(){
         </div>
       </main>
 
+      <Toaster />
     </div>
   )
 }

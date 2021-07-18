@@ -13,7 +13,7 @@ import "../styles/newRoom.scss"
 
 export function NewRoom(){
 
-  const { user, signInWithGoogle } = useAuth()
+  const { user } = useAuth()
 
   const [ newRoom, setNewRoom ] = useState('')
 

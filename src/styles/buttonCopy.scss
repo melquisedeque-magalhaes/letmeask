@@ -1,0 +1,34 @@
+.button-copy {
+  height: 40px;
+  border: 1px solid #835afd;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  max-width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  span {
+    padding: 0 16px;
+
+    font-size: 14px;
+    color: #29292e;
+    font-weight: 500;
+  }
+
+  .icon-copy {
+    background-color:#835afd;
+    height: 40px;
+    width: 44px;
+    border-radius: 8px;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
