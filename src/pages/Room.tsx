@@ -73,7 +73,10 @@ export function Room(){
         <div className="content">
           <img src={LogoImg} alt="Logo Letmeask" />
 
-          <ButtonCopy nameRoom={roomId} />
+          <div className="containerButton">
+            <ButtonCopy nameRoom={roomId} />
+          </div>
+          
         </div>
 
       </header>
