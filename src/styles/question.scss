@@ -1,4 +1,4 @@
-.container {
+.question {
   width: 100%;
   height: 152px;
   background-color: #FEFEFE;
@@ -8,6 +8,22 @@
 
   & + .container {
     margin-top: 8px;
+  }
+
+  
+
+  &.highlighted {
+    background-color: #F4F0FF;
+    border: 2px solid #835afd;
+
+    .question-footer .avatar span {
+      color: #29292E;
+    }
+
+  }
+
+  &.answered {
+    background-color: #dbdcdd;
   }
 
   display: flex;
@@ -68,7 +84,7 @@
   }
 
   &.liked {
-    color: #845afd;
+    color: #835afd;
   }
 
   button {
@@ -82,5 +98,4 @@
     }
   }
 
-  
 }

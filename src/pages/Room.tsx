@@ -114,23 +114,29 @@ export function Room(){
               question={question.content} 
               avatar={question.author.avatar} 
               key={question.id} 
+              isHighlighted={question.isHighlighted}
+              isAnswered={question.isAnswered}
             >
               { 
-                question.likeCount > 0 && 
+                question.likeCount > 0 && !question.isAnswered &&
                 <span className={question.likeId ? 'liked' : ''}>
                   {question.likeCount}
                 </span> 
               }
-              <button 
-                type="button" 
-                className={question.likeId ? 'liked' : ''}
-                onClick={() => handleLikeQuestion(question.id, question.likeId)}
-              >
-                <FiThumbsUp 
-                  size={24} 
-                  color={question.likeId ? '#845afd' : '#737380'} 
-                />
-              </button>
+
+              {!question.isAnswered && (
+                <button 
+                  type="button" 
+                  className={question.likeId ? 'liked' : ''}
+                  onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                >
+                  <FiThumbsUp 
+                    size={24} 
+                    color={question.likeId ? '#845afd' : '#737380'} 
+                  />
+                </button>
+              )}
+              
             </Question>
           ))}
 

@@ -42,6 +42,18 @@ export function AdminRoom(){
     
   }
 
+  async function handleCheckQuestionAnswered(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    })
+  }
+
+  async function handleHighlightQuestion(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true
+    })
+  }
+
   return(
     <div className="page-room">
       <header>
@@ -76,19 +88,27 @@ export function AdminRoom(){
               question={question.content} 
               avatar={question.author.avatar} 
               key={question.id} 
+              isHighlighted={question.isHighlighted}
+              isAnswered={question.isAnswered}
             >
-              <button type="button">
-                <FiCheckCircle 
-                  size={20} 
-                  color="#737380" 
-                />
-              </button>
-              <button type="button">
-                <FiMessageSquare 
-                  size={20} 
-                  color="#737380" 
-                />
-              </button>
+              {!question.isAnswered && (
+                <>
+                    <button type="button">
+                    <FiCheckCircle 
+                      size={20} 
+                      color={`${question.isHighlighted && !question.isAnswered ? "#835afd": "#737380"}` }
+                      onClick={() => handleCheckQuestionAnswered(question.id)}
+                    />
+                  </button>
+                  <button type="button">
+                    <FiMessageSquare 
+                      size={20} 
+                      color="#737380"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    />
+                  </button>
+                </>
+              )}
               <button 
                 type="button"
                 onClick={() => handleDeleteQuestion(question.id)}
