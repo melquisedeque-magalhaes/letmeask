@@ -27,10 +27,31 @@ export function Room(){
 
   const [ newQuestion, setNewQuestion ] = useState('')
 
-  async function handleLoginGoogle() {
-    if(!user){
+  async function handleLoginGoogle(event: FormEvent) {
+    event.preventDefault()
+
+    if(!user)
       await signInWithGoogle()
+  
+
+    if(newQuestion.trim() === ''){
+      toast.error('Formulário vazio!')
+      return
     }
+
+    const question = {
+      content: newQuestion,
+      author: {
+        name: user?.name,
+        avatar: user?.avatar
+      },
+      isHighlight: false,
+      isAnswer: false
+    }
+
+    await database.ref(`rooms/${roomId}/questions`).push(question)
+    setNewQuestion('')
+    toast.success('Pergunta enviada!')
   }
 
   async function handleSendQuestion(event: FormEvent){
