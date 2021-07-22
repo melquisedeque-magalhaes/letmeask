@@ -6,7 +6,7 @@
   color: #ffffff;
 
   aside {
-    flex: 7;
+    flex: 1;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -15,7 +15,15 @@
     padding: 7.5rem 5rem; 
 
     img {
-      max-width: 320px;
+      max-width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      padding: 0rem 0rem;
+
+      img {
+        display: none;
+      }
     }
 
     strong {
@@ -24,6 +32,10 @@
       font-size: 2.25rem;
       line-height: 42px;
       margin-top: 1rem;
+
+      @media (max-width: 720px) {
+        display: none;
+      }
     }
 
     p {
@@ -34,12 +46,16 @@
       line-height: 32px;
       color: #f8f8f8;
       opacity: 0.7;
+
+      @media (max-width: 720px) {
+        display: none;
+      }
     }
   }
 
   main {
-    flex: 8;
-
+    width: 700px;
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
