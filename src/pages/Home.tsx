@@ -12,13 +12,13 @@ import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
 import "../styles/home.scss"
-// import { database } from '../services/firebase'
+import { database } from '../services/firebase'
 import { useEffect } from 'react';
 
 export function Home(){
 
   useEffect(() => {
-    console.log("variavel ambiente: ", process.env.REACT_APP_API_KEY)
+    console.log(process.env.REACT_APP_API_KEY)
   },[])
 
   const history = useHistory()
@@ -37,30 +37,30 @@ export function Home(){
 
   }
 
-  // async function handleJoinRoom(event: FormEvent){
-  //   event.preventDefault()
+  async function handleJoinRoom(event: FormEvent){
+    event.preventDefault()
 
-  //   if(roomCode.trim() === ''){
-  //     toast.error('Erro Formulario vazio!')
-  //     return
-  //   }
+    if(roomCode.trim() === ''){
+      toast.error('Erro Formulario vazio!')
+      return
+    }
       
-  //   const roomRef = await database.ref(`rooms/${roomCode}`).get()
+    const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
-  //   if(!roomRef.exists()){
-  //     toast.error('Room does not exists')
-  //     return
-  //   }
+    if(!roomRef.exists()){
+      toast.error('Room does not exists')
+      return
+    }
 
-  //   if(roomRef.val().endedAt){
-  //     toast.error('Room already closed.')
-  //     return
-  //   }
+    if(roomRef.val().endedAt){
+      toast.error('Room already closed.')
+      return
+    }
       
-  //   toast.success('Seja bem vindo')
-  //   history.push(`room/${roomCode}`)
+    toast.success('Seja bem vindo')
+    history.push(`room/${roomCode}`)
 
-  // }
+  }
 
   return(
     <div id="container">
@@ -85,7 +85,7 @@ export function Home(){
 
           <div className="separator">ou entre em uma sala</div>
 
-          <form onSubmit={() => {}}>
+          <form onSubmit={handleJoinRoom}>
             <input 
               type="text"
               placeholder="Digite o código da sala" 
