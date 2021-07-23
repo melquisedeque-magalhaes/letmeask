@@ -13,8 +13,13 @@ import googleIconImg from '../assets/images/google-icon.svg'
 
 import "../styles/home.scss"
 import { database } from '../services/firebase'
+import { useEffect } from 'react';
 
 export function Home(){
+
+  useEffect(() => {
+    console.log(process.env.REACT_APP_API_KEY)
+  },[])
 
   const history = useHistory()
 
