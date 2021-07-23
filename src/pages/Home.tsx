@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-// import { useAuth } from '../hooks/useAuth'
+import { useAuth } from '../hooks/useAuth'
 import toast, { Toaster } from 'react-hot-toast';
 
 import { Button } from '../components/Button'
@@ -23,19 +23,19 @@ export function Home(){
 
   const history = useHistory()
 
-  // const { user, signInWithGoogle } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
 
   const [ roomCode, setRoomCode ] = useState('')
 
-  // async function handleCreateRoom(){
+  async function handleCreateRoom(){
 
-  //   if(!user){
-  //     await signInWithGoogle()
-  //   }
+    if(!user){
+      await signInWithGoogle()
+    }
     
-  //   history.push('/rooms/new')
+    history.push('/rooms/new')
 
-  // }
+  }
 
   // async function handleJoinRoom(event: FormEvent){
   //   event.preventDefault()
@@ -77,7 +77,7 @@ export function Home(){
 
           <button 
             className="create-room" 
-            // onClick={handleCreateRoom}
+            onClick={handleCreateRoom}
           >
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google

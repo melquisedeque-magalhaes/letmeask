@@ -7,8 +7,8 @@ import "../styles/room.scss"
 import { ButtonCopy } from '../components/ButtonCopy'
 
 import { Question } from '../components/Question'
-// import { useRoom } from '../hooks/useRoom';
-// import { database } from '../services/firebase'
+import { useRoom } from '../hooks/useRoom';
+import { database } from '../services/firebase'
 
 type RoomParams = {
   id: string;
@@ -21,108 +21,108 @@ export function AdminRoom(){
 
   const history = useHistory()
 
-  // const { questions, title } = useRoom(roomId)
+  const { questions, title } = useRoom(roomId)
 
-  // async function handleEndRoom(){
-  //   await database.ref(`rooms/${roomId}`).update({
-  //     endedAt: new Date(),
-  //   })
+  async function handleEndRoom(){
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date(),
+    })
 
-  //   history.push('/')
-  // }
+    history.push('/')
+  }
 
-  // async function handleDeleteQuestion(questionId: string) {
+  async function handleDeleteQuestion(questionId: string) {
 
-  //   const response = window.confirm("Deseja mesmo excluir essa pergunta ? ")
+    const response = window.confirm("Deseja mesmo excluir essa pergunta ? ")
 
-  //   if(response)
-  //     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    if(response)
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   
-  //   return;
+    return;
     
-  // }
+  }
 
-  // async function handleCheckQuestionAnswered(questionId: string){
-  //   await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-  //     isAnswered: true
-  //   })
-  // }
+  async function handleCheckQuestionAnswered(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    })
+  }
 
-  // async function handleHighlightQuestion(questionId: string){
-  //   await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-  //     isHighlighted: true
-  //   })
-  // }
+  async function handleHighlightQuestion(questionId: string){
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true
+    })
+  }
 
-  // return(
-  //   <div className="page-room">
-  //     <header>
+  return(
+    <div className="page-room">
+      <header>
 
-  //       <div className="content">
-  //         <img src={LogoImg} alt="Logo Letmeask" />
+        <div className="content">
+          <img src={LogoImg} alt="Logo Letmeask" />
 
-  //         <div className="buttons-header">
-  //           <ButtonCopy nameRoom={roomId} />
-  //           <Button 
-  //             isOutlined 
-  //             onClick={handleEndRoom}
-  //           >
-  //             Encerrar Sala
-  //           </Button>
-  //         </div>
+          <div className="buttons-header">
+            <ButtonCopy nameRoom={roomId} />
+            <Button 
+              isOutlined 
+              onClick={handleEndRoom}
+            >
+              Encerrar Sala
+            </Button>
+          </div>
           
-  //       </div>
+        </div>
 
-  //     </header>
+      </header>
 
-  //     <main>
-  //       <div className="room-title">
-  //         <h1>Sala {title}</h1>
-  //         {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-  //       </div>
+      <main>
+        <div className="room-title">
+          <h1>Sala {title}</h1>
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+        </div>
 
-  //       <div className="questions">
-  //         {questions.map(question => (
-  //           <Question 
-  //             author={question.author.name}
-  //             question={question.content} 
-  //             avatar={question.author.avatar} 
-  //             key={question.id} 
-  //             isHighlighted={question.isHighlighted}
-  //             isAnswered={question.isAnswered}
-  //           >
-  //             {!question.isAnswered && (
-  //               <>
-  //                   <button type="button">
-  //                   <FiCheckCircle 
-  //                     size={20} 
-  //                     color={`${question.isHighlighted && !question.isAnswered ? "#835afd": "#737380"}` }
-  //                     onClick={() => handleCheckQuestionAnswered(question.id)}
-  //                   />
-  //                 </button>
-  //                 <button type="button">
-  //                   <FiMessageSquare 
-  //                     size={20} 
-  //                     color="#737380"
-  //                     onClick={() => handleHighlightQuestion(question.id)}
-  //                   />
-  //                 </button>
-  //               </>
-  //             )}
-  //             <button 
-  //               type="button"
-  //               onClick={() => handleDeleteQuestion(question.id)}
-  //             >
-  //               <FiTrash 
-  //                 size={20} 
-  //                 color="#737380" 
-  //               />
-  //             </button>
-  //           </Question>
-  //         ))}
-  //       </div>
+        <div className="questions">
+          {questions.map(question => (
+            <Question 
+              author={question.author.name}
+              question={question.content} 
+              avatar={question.author.avatar} 
+              key={question.id} 
+              isHighlighted={question.isHighlighted}
+              isAnswered={question.isAnswered}
+            >
+              {!question.isAnswered && (
+                <>
+                    <button type="button">
+                    <FiCheckCircle 
+                      size={20} 
+                      color={`${question.isHighlighted && !question.isAnswered ? "#835afd": "#737380"}` }
+                      onClick={() => handleCheckQuestionAnswered(question.id)}
+                    />
+                  </button>
+                  <button type="button">
+                    <FiMessageSquare 
+                      size={20} 
+                      color="#737380"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    />
+                  </button>
+                </>
+              )}
+              <button 
+                type="button"
+                onClick={() => handleDeleteQuestion(question.id)}
+              >
+                <FiTrash 
+                  size={20} 
+                  color="#737380" 
+                />
+              </button>
+            </Question>
+          ))}
+        </div>
 
-  //     </main>
-  //   </div>
-  // )
+      </main>
+    </div>
+  )
 }
