@@ -20,6 +20,7 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_2304E }}'
           channelId: live
           projectId: letmeask-2304e
+        env:
           REACT_APP_API_KEY: '${{ secrets.REACT_APP_API_KEY }}'
           REACT_APP_AUTH_DOMAIN: letmeask-2304e.firebaseapp.com
           REACT_APP_DATABASE_URL: https://letmeask-2304e-default-rtdb.firebaseio.com
