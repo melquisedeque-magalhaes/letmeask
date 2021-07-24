@@ -15,12 +15,12 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_REACT_APP_API_KEY: '${{ secrets.REACT_APP_API_KEY }}'
-          envkey_REACT_APP_AUTH_DOMAIN: letmeask-2304e.firebaseapp.com
-          envkey_REACT_APP_DATABASE_URL: https://letmeask-2304e-default-rtdb.firebaseio.com
-          envkey_REACT_APP_PROJECT_ID: letmeask-2304e
-          envkey_REACT_APP_STORAGE_BUCKET: letmeask-2304e.appspot.com
-          envkey_REACT_APP_MESSAGING_SENDER_ID: 594390630532
-          envkey_REACT_APP_APP_ID: 1:594390630532:web:e62c61ee4aab45b61b42d1
+          envkey_REACT_APP_AUTH_DOMAIN: '${{ secrets.REACT_APP_AUTH_DOMAIN }}'
+          envkey_REACT_APP_DATABASE_URL: '${{ secrets.REACT_APP_DATABASE_URL }}'
+          envkey_REACT_APP_PROJECT_ID: '${{ secrets.REACT_APP_PROJECT_ID }}'
+          envkey_REACT_APP_STORAGE_BUCKET: '${{ secrets.REACT_APP_STORAGE_BUCKET }}'
+          envkey_REACT_APP_MESSAGING_SENDER_ID: '${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}'
+          envkey_REACT_APP_APP_ID: '${{ secrets.REACT_APP_APP_ID }}'
           file_name: .env.local
           directory: ./
       - run: yarn
