@@ -19,7 +19,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          super_secret: ${{ secrets.REACT_APP_API_KEY }}
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_2304E }}'
           channelId: live
           projectId: letmeask-2304e
