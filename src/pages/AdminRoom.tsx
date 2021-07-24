@@ -9,12 +9,16 @@ import { ButtonCopy } from '../components/ButtonCopy'
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase'
+import { ModalEndRoom } from '../components/ModalEndRoom'
+import { useState } from 'react'
 
 type RoomParams = {
   id: string;
 }
 
 export function AdminRoom(){
+
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const params = useParams<RoomParams>()
   const roomId = params.id
@@ -24,11 +28,16 @@ export function AdminRoom(){
   const { questions, title } = useRoom(roomId)
 
   async function handleEndRoom(){
+
     await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date(),
     })
 
     history.push('/')
+  }
+
+  async function openModal() {
+    setIsOpen(true)
   }
 
   async function handleDeleteQuestion(questionId: string) {
@@ -65,7 +74,7 @@ export function AdminRoom(){
             <ButtonCopy nameRoom={roomId} />
             <Button 
               isOutlined 
-              onClick={handleEndRoom}
+              onClick={openModal}
             >
               Encerrar Sala
             </Button>
@@ -123,6 +132,7 @@ export function AdminRoom(){
         </div>
 
       </main>
+      <ModalEndRoom modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} handleEndRoom={handleEndRoom} />
     </div>
   )
 }
