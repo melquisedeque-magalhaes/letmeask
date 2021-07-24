@@ -16,12 +16,10 @@ jobs:
       - run: yarn build 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-            repoToken: '${{ secrets.GITHUB_TOKEN }}'
-            firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_2304E }}'
-            channelId: live
-            projectId: letmeask-2304e
-      - name: Test
-        run: echo $REACT_APP_API_KEY
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_2304E }}'
+          channelId: live
+          projectId: letmeask-2304e
         env:
             REACT_APP_API_KEY: '${{ secrets.REACT_APP_API_KEY }}'
             REACT_APP_AUTH_DOMAIN: letmeask-2304e.firebaseapp.com
