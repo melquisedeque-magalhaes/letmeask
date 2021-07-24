@@ -9,6 +9,9 @@ name: Deploy to Firebase Hosting on merge
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+        REACT_APP_API_KEY: AIzaSyBaa7Z3NRRFdn-1Ra1bt2VQ4pssEvzGxgg
+        REACT_APP_AUTH_DOMAIN: letmeask-2304e.firebaseapp.com
     steps:
       - uses: actions/checkout@v2
       - run: yarn
