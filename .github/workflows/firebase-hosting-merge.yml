@@ -14,7 +14,6 @@ jobs:
       - run: yarn
       - run: yarn build 
       - uses: FirebaseExtended/action-hosting-deploy@v0
-      - run: ./.github/scripts/decrypt_secret.sh
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LETMEASK_2304E }}'
